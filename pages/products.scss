@@ -1,0 +1,13 @@
+@import '../styles/global';
+
+.card-container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
