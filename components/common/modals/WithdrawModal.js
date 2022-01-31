@@ -70,7 +70,7 @@ const WithdrawModal = ({ closeModal }) => {
 
   return (
     <>
-      <Modal title="Withdraw" closeModal={closeModal} w="40%">
+      <Modal title="Withdraw" closeModal={closeModal} w="30%">
         <div className="withdraw">
           {/* Sadman Sabbir  */}
 
@@ -111,24 +111,25 @@ const WithdrawModal = ({ closeModal }) => {
               <img src={availableToken[token].imgSrc} alt="" />
               <p>{availableToken[token].name}</p>
               <span className="custom-arrow"></span>
+
+              {showList && (
+                <div className="selector-dropdown">
+                  {availableToken.map((token) => (
+                    <div
+                      className="option"
+                      onClick={() => {
+                        setToken(token.id);
+                        handleTokenSelection();
+                      }}
+                      key={token.id}
+                    >
+                      <img src={token.imgSrc} alt="" />
+                      <p>{token.name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            {showList && (
-              <div className="selector-dropdown">
-                {availableToken.map((token) => (
-                  <div
-                    className="option"
-                    onClick={() => {
-                      setToken(token.id);
-                      handleTokenSelection();
-                    }}
-                    key={token.id}
-                  >
-                    <img src={token.imgSrc} alt="" />
-                    <p>{token.name}</p>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
 
           <button className="btnWallet">Connect Wallet</button>
@@ -157,16 +158,23 @@ const WithdrawModal = ({ closeModal }) => {
             outline: none;
           }
           .flexdisp {
+            flex-basis: 100%;
             display: flex;
-            align-items: end;
-          }
-          .selected-token {
-            padding: 8px 16px;
+            justify-content: center;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.048);
-            width: fit-content;
-            cursor: pointer;
+          }
 
+          .selected-token {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            align-content: flex-end;
+            //margin: 16px 16px 16px auto;
+            padding: 12.6px 13px 9.36px 11px;
+            cursor: pointer;
+            position: relative;
+            width: fit-content;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 0.5rem; /// sss
           }
 
@@ -175,8 +183,16 @@ const WithdrawModal = ({ closeModal }) => {
           }
 
           .selector-dropdown {
+            display: flex;
+            //gap: 1rem;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 1rem;
             position: absolute;
-            width: 50px;
+            top: 54px;
+            left: 0;
+            width: 480px;
+            //flex-wrap: wrap;
           }
 
           .option {
